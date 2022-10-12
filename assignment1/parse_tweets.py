@@ -1,15 +1,15 @@
 """
 Takes a stream of tweets as input (via stdin) and writes in tsv format to stdout.
-4 fields required: date, time rounded to nearest 15-minute, user's name, name of original poster (else NA
+4 fields required: date, time rounded to nearest 15-minute, user's name, name of original poster (else NA)
 Usage:
-    <raw tweets stdout> | python parse_tweets.py filename.csv
-    7z e -so tweets0.gz | python parse_tweets.py tweets0.csv
+    <raw tweets stdout> | python parse_tweets.py keyword.csv
+    7z e -so keyword.gz | python parse_tweets.py keyword.csv
 """
 
+import sys
+import re
 import csv
 import json
-import re
-import sys
 from typing import List
 
 

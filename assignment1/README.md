@@ -76,7 +76,7 @@
 
 ## CHANGELOG
 - 08/10/22
-  - read, understand assignment specifications
+  - read assignment specifications
 - 09/10/22
   - 1415-1430 install tweepy (global)
   - 1430-1515 setup twitter developer's account, create project/app, clone github repo
@@ -98,4 +98,4 @@
 - 12/10/22
   - 1200-1245 refactor `tweet_analysis.py`; fetch twitter data
   - 1500-1730 `tweet_analysis.py` improve graph appearance (prevent axis overlaps, legend, write texts)
-  - 1800-2000 readme file, `tweet_analysis.py` modify error with frm/frf, add unclassified percentages, push to github
+  - 1800-2030 readme file, `tweet_analysis.py` modify error with frm/frf, add unclassified percentages, push to github

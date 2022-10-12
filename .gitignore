@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+### personal settings
+.vscode
+
+# Twitter API user credentials
+**/creds.txt

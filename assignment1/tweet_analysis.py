@@ -1,17 +1,16 @@
 """
-CREATE A TWEET OBJECT that initialises the 4 fields, together with the prediction of user gender and the original user's gender (if any)
-two lists, one for male posts, one for female posts
-analyse the processed tweet data (.csv) that is passed in through command line, and plot graphs
+Analyses the processed tweet data, predicting the genders of users.
+Plots a graph of tweet volume against time.
+Usage: python tweet_analysis keyword.csv
 """
 
+import sys
 import csv
 import gzip
-import sys
 from typing import Dict, List
 import matplotlib.pyplot as plt
 import numpy as np
 
-# constant strings
 MALE = "MALE"
 FEMALE = "FEMALE"
 NA = "NA"
