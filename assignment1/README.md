@@ -18,6 +18,7 @@
 
 ## PROJECT STRUCTURE
 - `creds.txt` file containing all user keys needed to use Twitter's API <b>(DO NOT MODIFY)</b>
+  - <i>file is excluded from github repo</i>
 - `tweet_stream.py` uses Twitter's streaming API and the Tweepy python wrapper to scrape real-time Tweets; includes various flags to specify output or to filter certain tweets (specified below in commands)
 - `parse_tweets.py` reads a stream of raw tweets from stdin, processes them and saves the processed data to a (new) csv file specified by the user
 - `tweet_analysis.py` reads from the processed csv file to predict users' (and original posters') genders, then plot a graph
@@ -97,5 +98,4 @@
 - 12/10/22
   - 1200-1245 refactor `tweet_analysis.py`; fetch twitter data
   - 1500-1730 `tweet_analysis.py` improve graph appearance (prevent axis overlaps, legend, write texts)
-  - 1800-2000 readme file, `tweet_analysis.py` modify error with frm/frf, add unclassified percentages
-
+  - 1800-2000 readme file, `tweet_analysis.py` modify error with frm/frf, add unclassified percentages, push to github
