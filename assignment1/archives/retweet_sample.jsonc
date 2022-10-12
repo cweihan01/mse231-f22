@@ -1,0 +1,54 @@
+/* A sample retweeted Tweet retrieved, formatted to understand each field. */
+
+// https://twitter.com/i/web/status/<tweet_id>
+// https://twitter.com/i/web/status/1579477321878482944
+{
+    "data": {
+        "author_id": "1390318571050475520",
+        "created_at": "2022-10-10T14:21:53.000Z",
+        "edit_history_tweet_ids": ["1579477321878482944"],
+        "id": "1579477321878482944",
+        // referenced_tweets only appears if this tweet was a retweeted tweet/reply etc.
+        "referenced_tweets": [
+            {"type": "retweeted", "id": "1579460712963149826"}
+        ],
+        "text": "RT @decentra_web: We are excited to announce that today marks the 1 year anniversary of Decentraweb! \n\nA lot has happened in 1 year, and we…"
+    },
+    "includes": {
+        "users": [
+            // users[0] is the user who retweeted
+            {
+                "id": "1390318571050475520",
+                "name": "LuqAkki",
+                "username": "AkkiLuq"
+            },
+            // users[1] is the user of the original post
+            // if user retweeted his own post, users[1] does not exist
+            {
+                "id": "1438496625446506496",
+                "name": "Decentraweb ﹤⁄﹥",
+                "username": "decentra_web"
+            }
+        ],
+        "tweets": [
+            {
+                "author_id": "1390318571050475520",
+                "created_at": "2022-10-10T14:21:53.000Z",
+                "edit_history_tweet_ids": ["1579477321878482944"],
+                "id": "1579477321878482944",
+                "referenced_tweets": [
+                    {"type": "retweeted", "id": "1579460712963149826"}
+                ],
+                "text": "RT @decentra_web: We are excited to announce that today marks the 1 year anniversary of Decentraweb! \n\nA lot has happened in 1 year, and we…"
+            },
+            {
+                "author_id": "1438496625446506496",
+                "created_at": "2022-10-10T13:15:53.000Z",
+                "edit_history_tweet_ids": ["1579460712963149826"],
+                "id": "1579460712963149826",
+                "text": "We are excited to announce that today marks the 1 year anniversary of Decentraweb! \n\nA lot has happened in 1 year, and we are proud to have an awesome community to join us along our journey! \n\nRead more about what we achieved, and whats next for $DWEB in the #web3 domain space! https://t.co/DSV9Gyleoq"
+            }
+        ]
+    },
+    "matching_rules": [{"id": "1579302960286220288", "tag": ""}]
+}

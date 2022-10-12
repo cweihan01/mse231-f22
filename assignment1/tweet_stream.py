@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Collect tweets from Twitter streaming API via tweepy"""
+"""
+Collect tweets from Twitter streaming API via tweepy
+Usage: python tweet_stream.py --keyfile creds.txt --gzip keyword.gz --filter keyword
+"""
 
 import argparse
 import datetime
@@ -8,9 +11,10 @@ import os
 import sys
 import time
 
-from tweepy import Stream, Client, StreamingClient, StreamRule, Paginator
+from tweepy import Stream, Client, StreamingClient, StreamRule
 
 MAX_TWEETS = 500000
+
 
 class CustomStreamingClient(StreamingClient):
     total_tweets = 0
@@ -38,7 +42,11 @@ class CustomStreamingClient(StreamingClient):
         # You can modify the below code to e.g. manually the adjust the rate
         # at which you pull tweets, modify the cutoff, etc.
         if self.total_tweets > 0.8 * MAX_TWEETS:
-            eprint("Read " + str(self.total_tweets) + " tweets, terminating to avoid hitting 500k maximum")
+            eprint(
+                "Read "
+                + str(self.total_tweets)
+                + " tweets, terminating to avoid hitting 500k maximum"
+            )
             time.sleep(1)
             self.disconnect()
             return
@@ -103,7 +111,9 @@ if __name__ == "__main__":
 
     # Track time and start streaming
     starttime = datetime.datetime.now()
-    twitter_streaming_client = CustomStreamingClient(write=output, bearer_token=creds["bearer_token"])
+    twitter_streaming_client = CustomStreamingClient(
+        write=output, bearer_token=creds["bearer_token"]
+    )
     twitter_client = Client(bearer_token=creds["bearer_token"])
 
     # Clear out old rules
@@ -118,19 +128,26 @@ if __name__ == "__main__":
         if flags.filter:
             query = " ".join(flags.filter) + " lang:en"
             # Get tweet counts for this query for the past week
-            counts = twitter_client.get_recent_tweets_count(query=query, granularity='day')
+            counts = twitter_client.get_recent_tweets_count(
+                query=query, granularity="day"
+            )
             eprint("Last 7 days of tweet counts for query: " + query)
             eprint("start_time | tweet_count")
             warning = False
             for count in counts.data:
-                eprint(count['start'], "|", count['tweet_count'])
-                warning = warning or count['tweet_count'] > 300000
+                eprint(count["start"], "|", count["tweet_count"])
+                warning = warning or count["tweet_count"] > 300000
             if warning:
-                eprint("WARNING: You might exceed the 500,000 tweet account limit with this query!")
+                eprint(
+                    "WARNING: You might exceed the 500,000 tweet account limit with this query!"
+                )
             time.sleep(1)
             # Track specific tweets
             twitter_streaming_client.add_rules(StreamRule(query))
-            twitter_streaming_client.filter(tweet_fields='created_at', expansions=['author_id', 'referenced_tweets.id.author_id'])
+            twitter_streaming_client.filter(
+                tweet_fields="created_at",
+                expansions=["author_id", "referenced_tweets.id.author_id"],
+            )
         else:
             # Sample random tweets
             while True:
@@ -147,4 +164,3 @@ if __name__ == "__main__":
         f.close()
 
     eprint("total run time", datetime.datetime.now() - starttime)
-
